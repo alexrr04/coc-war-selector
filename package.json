@@ -1,0 +1,51 @@
+{
+  "name": "coc-clan-war-selector",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.alexrr04.coc-clan-war-selector",
+    "productName": "COC Clan War Selector",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "node_modules/**/*",
+      "assets/**/*",
+      "!**/.env"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/icon_transparent.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icons/icon_transparent.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icons/icon_transparent.png"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^31.0.2",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "clash-of-clans-api": "^0.6.3",
+    "dotenv": "^16.4.5"
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COC Clan War Selector</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>COC Clan War Selector</h1>
+    <ul id="members-list"></ul>
+    <div>
+      <label for="clan-tag">Clan tag:</label>
+      <input type="text" id="clan-tag" placeholder="#2QLLUOGPY" />
+    </div>
+    <div>
+      <label for="town-hall-level">Required Town Hall Level:</label>
+      <select id="town-hall-level"></select>
+    </div>
+    <div>
+      <label for="participants-count">Number of Participants:</label>
+      <input
+        type="number"
+        id="participants-count"
+        min="5"
+        max="50"
+        step="5"
+        placeholder="5"
+      />
+    </div>
+    <div>
+      <input type="checkbox" id="as-many-as-possible-checkbox" />
+      <label for="as-many-as-possible-checkbox"
+        >or select as many as possible</label
+      >
+    </div>
+    <button id="select-warriors">Select Warriors</button>
+    <div id="warriors-list"></div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div id="error-message" class="error-message"></div>
+    <button id="instructions-button">Instructions</button>
+    <div id="instructions-container" class="instructions-container">
+      <p>Instructions:</p>
+      <ol>
+        <li>Enter the clan tag in the "Clan Tag" field.</li>
+        <li>Select the minimum Town Hall level from the dropdown.</li>
+        <li>Enter the number of participants (must be a multiple of 5).</li>
+        <li>Click the "Select Warriors" button.</li>
+        <li>
+          Wait for the progress bar to complete and see the selected warriors
+          listed below.
+        </li>
+        <li>
+          Note that only the members of the clan with the war preference button
+          set to IN will have the chance to appear in the lists. The war
+          preference button can be found in your profile screen in Clash of
+          Clans.
+        </li>
+      </ol>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
+</html>

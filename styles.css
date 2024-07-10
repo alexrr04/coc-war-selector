@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Supercell Magic";
+  src: url("assets/fonts/supercell-magic/Supercell-Magic.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Supercell Magic", sans-serif;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 5px 0;
+}
+
+button {
+  font-family: "Supercell Magic", sans-serif;
+  font-size: small;
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#warriors-list {
+  margin-top: 20px;
+}
+
+.warrior-name {
+  font-family: "Supercell Magic", sans-serif; /* Make sure to include the font in your project */
+  font-size: 1.2em;
+  color: #ffcc00; /* Example color, adjust as needed */
+  padding: 10px;
+  border-bottom: 1px solid #999;
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #ccc;
+  border-radius: 5px;
+  margin-top: 20px;
+  height: 30px;
+  display: none; /* Hidden by default */
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  display: none;
+  margin-top: 10px;
+}
+
+#instructions-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+}
+
+.instructions-container {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
