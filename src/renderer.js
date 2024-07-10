@@ -158,11 +158,3 @@ for (let i = 3; i <= 16; i++) {
   option.textContent = `TH ${i}`;
   townHallSelect.appendChild(option);
 }
-
-// Load saved clan tag from localStorage
-// async function saveClanTag() {
-//   const savedClanTag = await localStorage.getItem("clanTag");
-//   if (savedClanTag) {
-//     document.getElementById("clan-tag").value = savedClanTag;
-//   }
-// }
