@@ -1,10 +1,8 @@
 const { contextBridge } = require("electron");
-const dotenv = require("dotenv");
 const clashApi = require("clash-of-clans-api");
+const env = require("./env");
 
-dotenv.config();
-
-const apiKey = process.env.COC_API_TOKEN;
+const apiKey = env.COC_API_TOKEN;
 
 console.log("Preload done");
 
@@ -28,8 +26,5 @@ contextBridge.exposeInMainWorld("api", {
         .then((response) => resolve(response))
         .catch((error) => reject(error));
     });
-  },
-  getApiKey: () => {
-    return apiKey;
   },
 });

@@ -1,11 +1,12 @@
 {
   "name": "coc-clan-war-selector",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepackage": "node build.js",
     "start": "electron .",
-    "build": "electron-builder"
+    "package": "electron-builder"
   },
   "build": {
     "appId": "com.alexrr04.coc-clan-war-selector",
@@ -14,11 +15,7 @@
       "output": "dist"
     },
     "files": [
-      "main.js",
-      "renderer.js",
-      "preload.js",
-      "index.html",
-      "styles.css",
+      "./src/**/*",
       "node_modules/**/*",
       "assets/**/*",
       "!**/.env"
@@ -37,9 +34,9 @@
     }
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "alexrr04",
+  "license": "MIT",
+  "description": "A tool for the game Clash of Clans that allows to randomly select members for clan wars under certain criteria that the user can choose. Simple but effective.",
   "devDependencies": {
     "electron": "^31.0.2",
     "electron-builder": "^24.13.3"

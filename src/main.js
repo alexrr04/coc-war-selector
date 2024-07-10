@@ -5,15 +5,15 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: path.join(__dirname, "assets/icons/icon_transparent.png"),
+    icon: path.join(__dirname, "assets/icons/distributable/icon_transparent"),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: true,
     },
   });
 
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile(path.join(__dirname, "index.html"));
 }
 
 app.whenReady().then(() => {
