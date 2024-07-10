@@ -18,6 +18,9 @@ node_modules/
 # Optional stylelint cache
 .stylelintcache
 
+# Dotenv
+.env
+
 # macOS files
 .DS_Store
 
