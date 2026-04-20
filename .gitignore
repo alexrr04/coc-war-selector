@@ -21,6 +21,9 @@ node_modules/
 # Dotenv
 .env
 
+# Dotenv
+.env
+
 # macOS files
 .DS_Store
 

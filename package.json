@@ -35,9 +35,14 @@
     }
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["electron"]
+    "onlyBuiltDependencies": [
+      "electron"
+    ]
   },
   "keywords": [],
+  "author": "alexrr04",
+  "license": "MIT",
+  "description": "A tool for the game Clash of Clans that allows to randomly select members for clan wars under certain criteria that the user can choose. Simple but effective.",
   "author": "alexrr04",
   "license": "MIT",
   "description": "A tool for the game Clash of Clans that allows to randomly select members for clan wars under certain criteria that the user can choose. Simple but effective.",
