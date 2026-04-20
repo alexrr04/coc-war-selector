@@ -28,3 +28,5 @@ node_modules/
 Thumbs.db
 
 out/
+src/env.js
+package-lock.json

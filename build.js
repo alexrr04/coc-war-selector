@@ -6,5 +6,10 @@ const envVars = {
   COC_API_TOKEN: process.env.COC_API_TOKEN,
 };
 
-const envFilePath = path.join(__dirname, "src", "env.js");
+const outDir = path.join(__dirname, "out");
+if (!fs.existsSync(outDir)) {
+  fs.mkdirSync(outDir);
+}
+
+const envFilePath = path.join(outDir, "env.js");
 fs.writeFileSync(envFilePath, `module.exports = ${JSON.stringify(envVars)}`);
