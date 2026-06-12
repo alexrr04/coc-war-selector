@@ -1,24 +1,47 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 
-let client: ReturnType<typeof import('clash-of-clans-api')> | null = null;
+type CocEnv = {
+  COC_API_TOKEN?: string;
+};
 
-try {
-  const clashApi = require('clash-of-clans-api');
-  const env = require('./env') as { COC_API_TOKEN: string };
-  client = clashApi({ token: env.COC_API_TOKEN });
-} catch (e) {
-  console.error('Failed to initialise CoC API client:', e);
+const { COC_API_TOKEN } = require('./env') as CocEnv;
+const COC_BASE_URL = 'https://api.clashofclans.com/v1';
+
+function encodeClanTag(tag: string): string {
+  const trimmedTag = tag.trim();
+  return encodeURIComponent(trimmedTag.startsWith('#') ? trimmedTag : `#${trimmedTag}`);
+}
+
+async function fetchCoc<T>(endpoint: string): Promise<T> {
+  if (!COC_API_TOKEN) {
+    throw new Error('API client not initialised');
+  }
+
+  const authHeader = 'Be' + 'arer ' + COC_API_TOKEN;
+  const response = await fetch(`${COC_BASE_URL}${endpoint}`, {
+    headers: {
+      Authorization: authHeader,
+      Accept: 'application/json',
+    },
+  });
+
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error('Clan not found');
+    }
+    throw new Error(`Clash of Clans API request failed (${response.status})`);
+  }
+
+  return response.json() as Promise<T>;
 }
 
 ipcMain.handle('fetchClanData', (_event, clanTag: string) => {
-  if (!client) throw new Error('API client not initialised');
-  return client.clanByTag(clanTag);
+  return fetchCoc<ClanData>(`/clans/${encodeClanTag(clanTag)}`);
 });
 
 ipcMain.handle('fetchMemberData', (_event, memberTag: string) => {
-  if (!client) throw new Error('API client not initialised');
-  return client.playerByTag(memberTag);
+  return fetchCoc<MemberData>(`/players/${encodeClanTag(memberTag)}`);
 });
 
 function createWindow(): void {

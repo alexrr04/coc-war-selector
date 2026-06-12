@@ -1,12 +1,3 @@
-declare module 'clash-of-clans-api' {
-  interface ClashClient {
-    clanByTag(tag: string): Promise<ClanData>;
-    playerByTag(tag: string): Promise<MemberData>;
-  }
-  function clashApi(options: { token: string }): ClashClient;
-  export = clashApi;
-}
-
 interface ClanMember {
   tag: string;
 }
