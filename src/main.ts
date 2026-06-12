@@ -8,17 +8,17 @@ type CocEnv = {
 const { COC_API_TOKEN } = require('./env') as CocEnv;
 const COC_BASE_URL = 'https://api.clashofclans.com/v1';
 
-function encodeClanTag(tag: string): string {
+function encodeClashTag(tag: string): string {
   const trimmedTag = tag.trim();
   return encodeURIComponent(trimmedTag.startsWith('#') ? trimmedTag : `#${trimmedTag}`);
 }
 
-async function fetchCoc<T>(endpoint: string): Promise<T> {
+async function fetchCoc<T>(endpoint: string, notFoundMessage = 'Resource not found'): Promise<T> {
   if (!COC_API_TOKEN) {
     throw new Error('API client not initialised');
   }
 
-  const authHeader = 'Be' + 'arer ' + COC_API_TOKEN;
+  const authHeader = 'Bearer '.concat(COC_API_TOKEN);
   const response = await fetch(`${COC_BASE_URL}${endpoint}`, {
     headers: {
       Authorization: authHeader,
@@ -28,7 +28,7 @@ async function fetchCoc<T>(endpoint: string): Promise<T> {
 
   if (!response.ok) {
     if (response.status === 404) {
-      throw new Error('Clan not found');
+      throw new Error(notFoundMessage);
     }
     throw new Error(`Clash of Clans API request failed (${response.status})`);
   }
@@ -37,11 +37,11 @@ async function fetchCoc<T>(endpoint: string): Promise<T> {
 }
 
 ipcMain.handle('fetchClanData', (_event, clanTag: string) => {
-  return fetchCoc<ClanData>(`/clans/${encodeClanTag(clanTag)}`);
+  return fetchCoc<ClanData>(`/clans/${encodeClashTag(clanTag)}`, 'Clan not found');
 });
 
 ipcMain.handle('fetchMemberData', (_event, memberTag: string) => {
-  return fetchCoc<MemberData>(`/players/${encodeClanTag(memberTag)}`);
+  return fetchCoc<MemberData>(`/players/${encodeClashTag(memberTag)}`, 'Player not found');
 });
 
 function createWindow(): void {
