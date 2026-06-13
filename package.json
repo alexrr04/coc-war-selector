@@ -48,7 +48,7 @@
   "description": "A tool for the game Clash of Clans that allows to randomly select members for clan wars under certain criteria that the user can choose. Simple but effective.",
   "devDependencies": {
     "@types/node": "^25.6.0",
-    "electron": "^31.0.2",
+    "electron": "^39.8.5",
     "electron-builder": "^24.13.3",
     "typescript": "^6.0.3"
   },
